@@ -15,7 +15,7 @@ class LjspiderPipeline:
         high = item['Height']
         floor = item['Floor']
 
-        item['Size'] = float(re.findall(r'[1-9]+\.?[0-9]', size)[0])
+        item['Size'] = float(re.findall(r'([1-9][0-9]*|0)(\.[0-9]+)?', size)[0])
         item['UnitPrice'] = float(re.findall(r'[1-9]+\.?[0-9]*', unitPrice)[0])
         item['Height'] = re.findall(r'.*?\(.(\d*).\).*?', high)[0]
         item['Floor'] = re.findall(r'.+(?=[(])', floor)[0]

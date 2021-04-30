@@ -37,4 +37,6 @@ class LjspiderItem(scrapy.Item):
     Subway = scrapy.Field()
     #房本是否满五年
     Taxfree = scrapy.Field()
+    #标题
+    Title = scrapy.Field()
     

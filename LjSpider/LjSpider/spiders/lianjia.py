@@ -50,6 +50,9 @@ class LianjiaSpider(scrapy.Spider):
 
         for info in house_info_list:
             item['Id'] = info.a['data-housecode']
+            house_info_title = info.find_all(name='div', class_ = 'title')[0]
+            house_info_title = house_info_title.get_text()
+            item['Title'] = house_info_title
             house_info = info.find_all(name="div", class_="houseInfo")[0]
             house_info = house_info.get_text()
             house_info = house_info.replace(' ', '')
@@ -64,6 +67,7 @@ class LianjiaSpider(scrapy.Spider):
                 item['Height'] = house_info[4]
                 item['Floor'] = house_info[4]
                 item['Construction'] = house_info[5]
+                print(item)
             except:
                 print("房屋数据保存错误")
 
